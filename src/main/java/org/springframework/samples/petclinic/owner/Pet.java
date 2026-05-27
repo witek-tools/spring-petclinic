@@ -49,7 +49,7 @@ public class Pet extends NamedEntity {
 
 	@Column
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@PastOrPresent(message = "Pet birth date must not be in the future")
+	@PastOrPresent(message = "Pet birth date cannot be set in the future")
 	private LocalDate birthDate;
 
 	@ManyToOne
