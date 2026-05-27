@@ -33,6 +33,7 @@ import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 /**
  * Simple JavaBean domain object representing an owner.
@@ -50,10 +51,12 @@ public class Owner extends Person {
 
 	@Column
 	@NotBlank
+	@Size(min = 3, max = 80, message = "Address must be between 3 and 80 characters")
 	private String address;
 
 	@Column
 	@NotBlank
+	@Size(min = 2, max = 80, message = "City must be between 2 and 80 characters")
 	private String city;
 
 	@Column
