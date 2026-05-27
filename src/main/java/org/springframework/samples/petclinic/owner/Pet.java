@@ -32,6 +32,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 
 /**
  * Simple business object representing a pet.
@@ -47,10 +49,12 @@ public class Pet extends NamedEntity {
 
 	@Column
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@PastOrPresent(message = "Pet birth date must not be in the future")
 	private LocalDate birthDate;
 
 	@ManyToOne
 	@JoinColumn(name = "type_id")
+	@NotNull(message = "Pet type is required")
 	private PetType type;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
